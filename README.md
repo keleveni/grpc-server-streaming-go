@@ -1,5 +1,14 @@
 # grpc-golang
 
+## Getting Started
+```
+$ go run ./cmd/serve
+$ grpcurl -plaintext \
+  -d '{"name":"Guest"}' \
+  localhost:50051 \
+  greeter.Greeter/SayHello
+```
+
 ## gRPC
 ```
 protoc \
