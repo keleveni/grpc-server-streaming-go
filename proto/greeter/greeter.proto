@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package greeter;
 
-option go_package = "github.com/kodaikumatani/grpc-golang/internal/grpc;greeter";
+option go_package = "github.com/kodaikumatani/grpc-golang/internal/pb/greeter";
 
 import "google/protobuf/timestamp.proto";
 
