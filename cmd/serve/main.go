@@ -18,14 +18,18 @@ var (
 func main() {
 	flag.Parse()
 
-	ctx := context.Background()
-
-	services, err := initializeServices(ctx)
-
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
+
+	ctx := context.Background()
+
+	services, err := initializeServices(ctx)
+	if err != nil {
+		log.Fatalf("failed to listen: %v", err)
+	}
+
 	s := grpc.NewServer()
 	s = services.Router.Routes(s)
 	reflection.Register(s)
