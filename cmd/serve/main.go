@@ -31,7 +31,7 @@ func main() {
 	}
 
 	s := grpc.NewServer()
-	s = services.Router.Routes(s)
+	s = services.Registrar.Register(s)
 	reflection.Register(s)
 	log.Printf("server listening at %v", lis.Addr())
 	if err := s.Serve(lis); err != nil {
