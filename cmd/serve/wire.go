@@ -12,7 +12,7 @@ import (
 )
 
 type services struct {
-	*grpc.Router
+	*grpc.Registrar
 }
 
 var set = wire.NewSet(

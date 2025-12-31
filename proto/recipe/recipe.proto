@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package recipe;
+
+option go_package = "github.com/kodaikumatani/grpc-golang/internal/pb/recipe";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+service RecipeService {
+  rpc CreateRecipe(CreateRecipeRequest) returns (CreateRecipeResponse);
+  rpc GetRecipe(GetRecipeRequest) returns (GetRecipeResponse);
+  rpc ListRecipes(ListRecipesRequest) returns (ListRecipesResponse);
+  rpc UpdateRecipe(UpdateRecipeRequest) returns (UpdateRecipeResponse);
+  rpc DeleteRecipe(DeleteRecipeRequest) returns (google.protobuf.Empty);
+}
+
+message Recipe {
+  string id = 1;
+  string user_id = 2;
+  string title = 3;
+  string description = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}
+
+message CreateRecipeRequest {
+  string user_id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+message CreateRecipeResponse { Recipe recipe = 1; }
+
+message GetRecipeRequest { string id = 1; }
+message GetRecipeResponse { Recipe recipe = 1; }
+
+message ListRecipesRequest { int32 page_size = 1; string page_token = 2; }
+message ListRecipesResponse { repeated Recipe recipes = 1; string next_page_token = 2; }
+
+message UpdateRecipeRequest { string id = 1; string title = 2; string description = 3; }
+message UpdateRecipeResponse { Recipe recipe = 1; }
+
+message DeleteRecipeRequest { string id = 1; }

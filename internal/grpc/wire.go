@@ -2,10 +2,10 @@ package grpc
 
 import (
 	"github.com/google/wire"
-	"github.com/kodaikumatani/grpc-golang/internal/grpc/greeter"
+	"github.com/kodaikumatani/grpc-golang/internal/grpc/recipe"
 )
 
 var Set = wire.NewSet(
-	greeter.Set,
-	NewRouter,
+	recipe.Set,
+	NewRegistrar,
 )
