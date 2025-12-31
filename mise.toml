@@ -1,3 +1,4 @@
 [tools]
+atlas = "latest"
 grpcurl = "1.9.3"
 protobuf = "33.2"
