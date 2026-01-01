@@ -7,11 +7,16 @@ import (
 
 type RecipeHandler struct {
 	pb.UnimplementedRecipeServiceServer
-	read *recipe.ReadUseCase
+	read   *recipe.ReadUseCase
+	create *recipe.CreateUseCase
 }
 
-func NewRecipeHandler(read *recipe.ReadUseCase) *RecipeHandler {
+func NewRecipeHandler(
+	read *recipe.ReadUseCase,
+	create *recipe.CreateUseCase,
+) *RecipeHandler {
 	return &RecipeHandler{
-		read: read,
+		read:   read,
+		create: create,
 	}
 }

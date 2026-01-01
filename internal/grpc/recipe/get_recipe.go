@@ -26,7 +26,7 @@ func (h *RecipeHandler) GetRecipe(
 
 	return &pb.GetRecipeResponse{Recipe: &pb.Recipe{
 		Id:          result.ID.String(),
-		UserId:      result.UserID.String(),
+		UserId:      result.UserID,
 		Title:       result.Title,
 		Description: result.Description,
 		CreatedAt:   timestamppb.New(result.CreatedAt),
