@@ -6,5 +6,6 @@ import (
 )
 
 var Set = wire.NewSet(
-	recipe.Set,
+	recipe.NewCreateUseCase,
+	recipe.NewReadUseCase,
 )

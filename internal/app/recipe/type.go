@@ -1,6 +1,7 @@
 package recipe
 
 import (
+	"context"
 	"time"
 
 	"github.com/cockroachdb/errors"
@@ -18,4 +19,9 @@ type Recipe struct {
 	Description string    `bun:"description"`
 	CreatedAt   time.Time `bun:"created_at"`
 	UpdatedAt   time.Time `bun:"updated_at"`
+}
+
+type Storage interface {
+	Create(ctx context.Context, recipe *Recipe) error
+	GetByID(ctx context.Context, id uuid.UUID) (*Recipe, error)
 }
