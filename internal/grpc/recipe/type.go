@@ -5,17 +5,17 @@ import (
 	pb "github.com/kodaikumatani/grpc-golang/internal/pb/recipe"
 )
 
-type RecipeHandler struct {
+type Handler struct {
 	pb.UnimplementedRecipeServiceServer
 	read   *recipe.ReadUseCase
 	create *recipe.CreateUseCase
 }
 
-func NewRecipeHandler(
+func NewHandler(
 	read *recipe.ReadUseCase,
 	create *recipe.CreateUseCase,
-) *RecipeHandler {
-	return &RecipeHandler{
+) *Handler {
+	return &Handler{
 		read:   read,
 		create: create,
 	}

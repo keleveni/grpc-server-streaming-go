@@ -9,7 +9,7 @@ import (
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
-func (h *RecipeHandler) CreateRecipe(
+func (h *Handler) CreateRecipe(
 	ctx context.Context,
 	in *pb.CreateRecipeRequest,
 ) (*pb.CreateRecipeResponse, error) {

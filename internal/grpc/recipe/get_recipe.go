@@ -11,7 +11,7 @@ import (
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
-func (h *RecipeHandler) GetRecipe(
+func (h *Handler) GetRecipe(
 	ctx context.Context,
 	in *pb.GetRecipeRequest,
 ) (*pb.GetRecipeResponse, error) {

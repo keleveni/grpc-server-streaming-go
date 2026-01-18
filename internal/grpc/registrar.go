@@ -2,23 +2,24 @@ package grpc
 
 import (
 	"github.com/kodaikumatani/grpc-golang/internal/grpc/recipe"
+	pb "github.com/kodaikumatani/grpc-golang/internal/pb/recipe"
 	"google.golang.org/grpc"
 )
 
 type Registrar struct {
-	recipeRegistrar *recipe.Registrar
+	recipeHandler *recipe.Handler
 }
 
 func NewRegistrar(
-	recipeRegistrar *recipe.Registrar,
+	recipeHandler *recipe.Handler,
 ) *Registrar {
 	return &Registrar{
-		recipeRegistrar: recipeRegistrar,
+		recipeHandler: recipeHandler,
 	}
 }
 
 func (r *Registrar) Register(app *grpc.Server) *grpc.Server {
-	r.recipeRegistrar.Register(app)
+	pb.RegisterRecipeServiceServer(app, r.recipeHandler)
 
 	return app
 }

@@ -2,15 +2,10 @@ package recipe
 
 import (
 	"github.com/google/wire"
-	apprecipe "github.com/kodaikumatani/grpc-golang/internal/app/recipe"
-)
-
-var handlerSet = wire.NewSet(
-	NewRecipeHandler,
+	"github.com/kodaikumatani/grpc-golang/internal/app/recipe"
 )
 
 var Set = wire.NewSet(
-	handlerSet,
-	NewRegistrar,
-	apprecipe.Set,
+	recipe.Set,
+	NewHandler,
 )
