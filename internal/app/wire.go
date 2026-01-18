@@ -1,4 +1,4 @@
-package recipe
+package app
 
 import (
 	"github.com/google/wire"
@@ -7,5 +7,4 @@ import (
 
 var Set = wire.NewSet(
 	recipe.Set,
-	NewHandler,
 )

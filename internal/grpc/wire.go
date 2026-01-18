@@ -6,6 +6,6 @@ import (
 )
 
 var Set = wire.NewSet(
-	recipe.Set,
-	NewRegistrar,
+	recipe.NewHandler,
+	wire.Struct(new(Registrar), "*"),
 )
