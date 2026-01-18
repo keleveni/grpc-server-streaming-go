@@ -2,22 +2,19 @@ package recipe
 
 import (
 	"context"
-	"database/sql"
 
-	"github.com/cockroachdb/errors"
 	"github.com/google/uuid"
-	"github.com/uptrace/bun"
 )
 
 type ReadUseCase struct {
-	db bun.IDB
+	storage Storage
 }
 
 func NewReadUseCase(
-	db bun.IDB,
+	storage Storage,
 ) *ReadUseCase {
 	return &ReadUseCase{
-		db: db,
+		storage: storage,
 	}
 }
 
@@ -27,14 +24,10 @@ func (u *ReadUseCase) Get(ctx context.Context, id string) (*Recipe, error) {
 		return nil, err
 	}
 
-	recipe := Recipe{ID: uid}
-	if err := u.db.NewSelect().Model(&recipe).WherePK().Scan(ctx); err != nil {
-		if errors.Is(err, sql.ErrNoRows) {
-			return nil, errors.WithStack(ErrRecipeNotFound)
-		}
-
+	recipe, err := u.storage.GetByID(ctx, uid)
+	if err != nil {
 		return nil, err
 	}
 
-	return &recipe, nil
+	return recipe, nil
 }

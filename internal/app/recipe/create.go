@@ -7,18 +7,17 @@ import (
 	"github.com/google/uuid"
 	"github.com/oklog/ulid/v2"
 	"github.com/samber/lo"
-	"github.com/uptrace/bun"
 )
 
 type CreateUseCase struct {
-	db bun.IDB
+	storage Storage
 }
 
 func NewCreateUseCase(
-	db bun.IDB,
+	storage Storage,
 ) *CreateUseCase {
 	return &CreateUseCase{
-		db: db,
+		storage: storage,
 	}
 }
 
@@ -41,7 +40,7 @@ func (u *CreateUseCase) Invoke(
 		UpdatedAt:   time.Now(),
 	}
 
-	if _, err := u.db.NewInsert().Model(&recipe).Exec(ctx); err != nil {
+	if err := u.storage.Create(ctx, &recipe); err != nil {
 		return nil, err
 	}
 
