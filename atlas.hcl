@@ -1,15 +1,15 @@
 env "local" {
-    src = "file://./database/schema.pg.hcl"
-    url = "postgres://gcook:p4ssw0rd!@localhost:25432/gcook?search_path=gcook&sslmode=disable"
-    dev = "docker://postgres/15/dev?search_path=public"
+  src = "file://./database/schema.pg.hcl"
+  url = "postgres://gcook:p4ssw0rd!@localhost:25432/gcook?search_path=gcook&sslmode=disable"
+  dev = "docker://postgres/15/dev?search_path=public"
 
-    migration {
-        dir = "file://./database/migrations"
-    }
+  migration {
+    dir = "file://./database/migrations"
+  }
 
-    format {
-        migrate {
-            diff = "{{ sql . \"  \" }}"
-        }
+  format {
+    migrate {
+      diff = "{{ sql . \"  \" }}"
     }
+  }
 }

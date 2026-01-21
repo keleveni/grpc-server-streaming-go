@@ -2,3 +2,8 @@
 atlas = "latest"
 grpcurl = "1.9.3"
 protobuf = "33.2"
+
+[env]
+POSTGRES_DATABASE="gcook"
+POSTGRES_USER="gcook"
+POSTGRES_PASSWORD="p4ssw0rd!"
