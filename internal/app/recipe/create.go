@@ -5,7 +5,6 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/oklog/ulid/v2"
 	"github.com/samber/lo"
 )
 
@@ -27,10 +26,6 @@ func (u *CreateUseCase) Invoke(
 	title,
 	description string,
 ) (*Recipe, error) {
-	if _, err := ulid.Parse(userID); err != nil {
-		return nil, err
-	}
-
 	recipe := Recipe{
 		ID:          lo.Must(uuid.NewV7()),
 		UserID:      userID,

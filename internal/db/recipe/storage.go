@@ -11,10 +11,10 @@ import (
 )
 
 type Storage struct {
-	db *bun.DB
+	db bun.IDB
 }
 
-func NewStorage(db *bun.DB) *Storage {
+func NewStorage(db bun.IDB) *Storage {
 	return &Storage{db: db}
 }
 
@@ -35,4 +35,10 @@ func (s *Storage) GetByID(ctx context.Context, id uuid.UUID) (*recipe.Recipe, er
 	}
 
 	return &entity, nil
+}
+
+func (r *Storage) List() recipe.List {
+	return &List{
+		query: r.db.NewSelect(),
+	}
 }

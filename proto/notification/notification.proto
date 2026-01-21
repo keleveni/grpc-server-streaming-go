@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package notification;
+
+option go_package = "github.com/kodaikumatani/grpc-golang/internal/pb/notification";
+
+import "google/protobuf/timestamp.proto";
+
+service NotificationService {
+  rpc SubscribeRecipeFeed(SubscribeRecipeFeedRequest) returns (stream RecipeEvent);
+}
+
+message SubscribeRecipeFeedRequest {
+  string user_id = 1;
+}
+
+message RecipeEvent {
+  string event_type = 1;
+  RecipeInfo recipe = 2;
+  google.protobuf.Timestamp event_time = 3;
+}
+
+message RecipeInfo {
+  string id = 1;
+  string user_id = 2;
+  string title = 3;
+  string description = 4;
+  google.protobuf.Timestamp created_at = 5;
+}
