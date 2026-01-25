@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package follow;
+
+option go_package = "github.com/kodaikumatani/grpc-golang/internal/pb/follow";
+
+import "google/protobuf/timestamp.proto";
+
+service FollowService {
+  rpc FollowUser(FollowUserRequest) returns (FollowUserResponse);
+}
+
+message FollowUserRequest {
+  string follower_id = 1;  // フォローする人
+  string followee_id = 2;  // フォローされる人
+}
+
+message FollowUserResponse {
+  Follow follow = 1;
+}
+
+message Follow {
+  string follower_id = 1;
+  string followee_id = 2;
+  google.protobuf.Timestamp created_at = 3;
+}
