@@ -1,6 +1,7 @@
 package notification
 
 import (
+	"github.com/go-playground/validator/v10"
 	"github.com/kodaikumatani/grpc-golang/internal/app/recipe"
 	pb "github.com/kodaikumatani/grpc-golang/internal/pb/notification"
 	"google.golang.org/grpc"
@@ -9,32 +10,37 @@ import (
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
+type subscribeRecipeFeedRequest struct {
+	UserID string `validate:"required,ulid"`
+}
+
 func (h *Handler) SubscribeRecipeFeed(
 	in *pb.SubscribeRecipeFeedRequest,
 	stream grpc.ServerStreamingServer[pb.RecipeEvent],
 ) error {
-	userID := in.GetUserId()
-	if userID == "" {
-		return status.Error(codes.InvalidArgument, "user_id is required")
+	request := &subscribeRecipeFeedRequest{
+		UserID: in.GetUserId(),
 	}
 
-	return h.subscribeFeed.StreamRecipes(stream.Context(), userID, func(r recipe.Recipe) error {
-		event := &pb.RecipeEvent{
-			EventType: "created",
-			Recipe: &pb.RecipeInfo{
-				Id:          r.ID.String(),
-				UserId:      r.UserID,
-				Title:       r.Title,
-				Description: r.Description,
-				CreatedAt:   timestamppb.New(r.CreatedAt),
-			},
-			EventTime: timestamppb.New(r.CreatedAt),
-		}
+	if err := validator.New().Struct(request); err != nil {
+		return status.Error(codes.InvalidArgument, "invalid request parameters")
+	}
 
-		if err := stream.Send(event); err != nil {
-			return err
-		}
+	return h.subscribeFeed.StreamRecipes(stream.Context(), request.UserID,
+		func(r recipe.Recipe) error {
+			event := &pb.RecipeEvent{
+				EventType: "created",
+				Recipe: &pb.RecipeInfo{
+					Id:          r.ID.String(),
+					UserId:      r.UserID,
+					Title:       r.Title,
+					Description: r.Description,
+					CreatedAt:   timestamppb.New(r.CreatedAt),
+				},
+				EventTime: timestamppb.New(r.CreatedAt),
+			}
 
-		return nil
-	})
+			return stream.Send(event)
+		},
+	)
 }

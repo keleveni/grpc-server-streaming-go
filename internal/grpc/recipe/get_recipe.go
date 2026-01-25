@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 
+	"github.com/go-playground/validator/v10"
 	"github.com/kodaikumatani/grpc-golang/internal/app/recipe"
 	pb "github.com/kodaikumatani/grpc-golang/internal/pb/recipe"
 	"google.golang.org/grpc/codes"
@@ -11,14 +12,26 @@ import (
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
+type getRecipeRequest struct {
+	ID string `validate:"required,uuid"`
+}
+
 func (h *Handler) GetRecipe(
 	ctx context.Context,
 	in *pb.GetRecipeRequest,
 ) (*pb.GetRecipeResponse, error) {
-	result, err := h.read.Get(ctx, in.GetId())
+	request := &getRecipeRequest{
+		ID: in.GetId(),
+	}
+
+	if err := validator.New().Struct(request); err != nil {
+		return nil, status.Error(codes.InvalidArgument, "invalid request parameters")
+	}
+
+	result, err := h.read.Get(ctx, request.ID)
 	if err != nil {
 		if errors.Is(err, recipe.ErrRecipeNotFound) {
-			return nil, status.Error(codes.NotFound, err.Error())
+			return nil, status.Error(codes.NotFound, recipe.ErrRecipeNotFound.Error())
 		}
 
 		return nil, status.Error(codes.Internal, err.Error())
