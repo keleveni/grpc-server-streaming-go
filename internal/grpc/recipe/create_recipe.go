@@ -27,7 +27,7 @@ func (h *Handler) CreateRecipe(
 	}
 
 	if err := validator.New().Struct(request); err != nil {
-		return nil, status.Error(codes.InvalidArgument, "invalid request parameters")
+		return nil, status.Error(codes.InvalidArgument, err.Error())
 	}
 
 	result, err := h.create.Invoke(ctx,

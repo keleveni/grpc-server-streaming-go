@@ -25,7 +25,7 @@ func (h *Handler) FollowUser(
 	}
 
 	if err := validator.New().Struct(request); err != nil {
-		return nil, status.Error(codes.InvalidArgument, "invalid request parameters")
+		return nil, status.Error(codes.InvalidArgument, err.Error())
 	}
 
 	if err := h.follow.Follow(ctx, request.FollowerID, request.FolloweeID); err != nil {

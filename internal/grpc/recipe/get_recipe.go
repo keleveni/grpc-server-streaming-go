@@ -25,7 +25,7 @@ func (h *Handler) GetRecipe(
 	}
 
 	if err := validator.New().Struct(request); err != nil {
-		return nil, status.Error(codes.InvalidArgument, "invalid request parameters")
+		return nil, status.Error(codes.InvalidArgument, err.Error())
 	}
 
 	result, err := h.read.Get(ctx, request.ID)
