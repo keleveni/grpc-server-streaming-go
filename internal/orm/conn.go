@@ -4,12 +4,14 @@ import (
 	"context"
 	"database/sql"
 	"os"
+	"time"
 
 	"github.com/cockroachdb/errors"
+	"github.com/rs/zerolog"
 	"github.com/uptrace/bun"
 	"github.com/uptrace/bun/dialect/pgdialect"
 	"github.com/uptrace/bun/driver/pgdriver"
-	"github.com/uptrace/bun/extra/bundebug"
+	"github.com/uptrace/bun/extra/bunzerolog"
 )
 
 func NewBun(ctx context.Context) (*bun.DB, error) {
@@ -24,9 +26,14 @@ func NewBun(ctx context.Context) (*bun.DB, error) {
 
 	db := bun.NewDB(sql.OpenDB(pgconn), pgdialect.New())
 
-	db.AddQueryHook(bundebug.NewQueryHook(
-		bundebug.WithVerbose(true),
-	))
+	hook := bunzerolog.NewQueryHook(
+		bunzerolog.WithQueryLogLevel(zerolog.InfoLevel),
+		bunzerolog.WithSlowQueryLogLevel(zerolog.WarnLevel),
+		bunzerolog.WithErrorQueryLogLevel(zerolog.ErrorLevel),
+		bunzerolog.WithSlowQueryThreshold(3*time.Second),
+	)
+
+	db.AddQueryHook(hook)
 
 	if err := db.PingContext(ctx); err != nil {
 		return nil, errors.Wrap(err, "could not ping the database")
