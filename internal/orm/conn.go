@@ -11,6 +11,7 @@ import (
 	"github.com/uptrace/bun"
 	"github.com/uptrace/bun/dialect/pgdialect"
 	"github.com/uptrace/bun/driver/pgdriver"
+	"github.com/uptrace/bun/extra/bunotel"
 	"github.com/uptrace/bun/extra/bunzerolog"
 )
 
@@ -26,14 +27,14 @@ func NewBun(ctx context.Context) (*bun.DB, error) {
 
 	db := bun.NewDB(sql.OpenDB(pgconn), pgdialect.New())
 
-	hook := bunzerolog.NewQueryHook(
+	db.AddQueryHook(bunzerolog.NewQueryHook(
 		bunzerolog.WithQueryLogLevel(zerolog.InfoLevel),
 		bunzerolog.WithSlowQueryLogLevel(zerolog.WarnLevel),
 		bunzerolog.WithErrorQueryLogLevel(zerolog.ErrorLevel),
 		bunzerolog.WithSlowQueryThreshold(3*time.Second),
-	)
+	))
 
-	db.AddQueryHook(hook)
+	db.AddQueryHook(bunotel.NewQueryHook())
 
 	if err := db.PingContext(ctx); err != nil {
 		return nil, errors.Wrap(err, "could not ping the database")

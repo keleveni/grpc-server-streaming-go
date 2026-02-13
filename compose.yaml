@@ -15,7 +15,23 @@ services:
       timeout: 5s
     ports:
       - "127.0.0.1:25432:5432"
-      - "[::1]:25432:5432"
+  jaeger:
+    image: jaegertracing/all-in-one:1.52
+    ports:
+      - "16686:16686"  # UI
+      - "4317"         # OTLP gRPC (internal only)
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
 
+  otelcol:
+    image: otel/opentelemetry-collector-contrib:0.95.0
+    command: ["--config=/etc/otelcol/config.yaml"]
+    volumes:
+      - ./otelcol-config.yaml:/etc/otelcol/config.yaml:ro
+    ports:
+      - "4317:4317"  # 受け口(OTLP gRPC)
+      - "4318:4318"  # 受け口(OTLP HTTP)
+    depends_on:
+      - jaeger
 volumes:
   postgres_data:
