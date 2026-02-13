@@ -4,7 +4,6 @@ import (
 	"context"
 
 	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/logging"
-	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -20,31 +19,19 @@ func PanicRecoveryHandler(ctx context.Context, p any) error {
 
 func LoggingAdapter() logging.Logger {
 	return logging.LoggerFunc(func(ctx context.Context, lvl logging.Level, msg string, fields ...any) {
-		logger := log.Ctx(ctx)
+		logger := log.Ctx(ctx).With().Fields(fields).Logger()
 
-		var event *zerolog.Event
 		switch lvl {
 		case logging.LevelDebug:
-			event = logger.Debug()
+			logger.Debug().Msg(msg)
 		case logging.LevelInfo:
-			event = logger.Info()
+			logger.Info().Msg(msg)
 		case logging.LevelWarn:
-			event = logger.Warn()
+			logger.Warn().Msg(msg)
 		case logging.LevelError:
-			event = logger.Error()
+			logger.Error().Msg(msg)
 		default:
-			event = logger.Info()
+			logger.Info().Msg(msg)
 		}
-
-		for i := 0; i < len(fields); i += 2 {
-			if i+1 < len(fields) {
-				key, ok := fields[i].(string)
-				if ok {
-					event = event.Interface(key, fields[i+1])
-				}
-			}
-		}
-
-		event.Msg(msg)
 	})
 }
