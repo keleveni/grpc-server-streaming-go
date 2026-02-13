@@ -5,7 +5,6 @@ import (
 	"flag"
 	"fmt"
 	"net"
-	"os"
 
 	"github.com/cockroachdb/errors"
 	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/logging"
@@ -60,7 +59,6 @@ func main() {
 	ctx = logger.WithLogger(ctx)
 
 	if err := run(ctx); err != nil {
-		log.Ctx(ctx).Error().Err(err).Send()
-		os.Exit(1)
+		log.Ctx(ctx).Fatal().Err(err).Send()
 	}
 }
