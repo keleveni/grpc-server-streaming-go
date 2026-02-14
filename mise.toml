@@ -1,7 +1,7 @@
 [tools]
 atlas = "latest"
+buf = "latest"
 grpcurl = "1.9.3"
-protobuf = "33.2"
 
 [env]
 POSTGRES_DATABASE="gcook"
