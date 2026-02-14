@@ -5,12 +5,18 @@ import (
 
 	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/logging"
 	"github.com/rs/zerolog/log"
+	"go.opentelemetry.io/otel/trace"
 	"google.golang.org/grpc"
 )
 
 func LoggingUnaryInterceptor() grpc.UnaryServerInterceptor {
+	opts := []logging.Option{
+		withTraceID(),
+	}
+
 	return logging.UnaryServerInterceptor(
 		loggingAdapter(),
+		opts...,
 	)
 }
 
@@ -36,5 +42,14 @@ func loggingAdapter() logging.Logger {
 		default:
 			logger.Info().Msg(msg)
 		}
+	})
+}
+
+func withTraceID() logging.Option {
+	return logging.WithFieldsFromContext(func(ctx context.Context) logging.Fields {
+		if span := trace.SpanContextFromContext(ctx); span.IsSampled() {
+			return logging.Fields{"traceID", span.TraceID().String()}
+		}
+		return nil
 	})
 }
