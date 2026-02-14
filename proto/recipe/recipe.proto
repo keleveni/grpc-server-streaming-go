@@ -6,13 +6,36 @@ option go_package = "github.com/kodaikumatani/grpc-golang/internal/pb/recipe";
 
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
 
 service RecipeService {
-  rpc CreateRecipe(CreateRecipeRequest) returns (CreateRecipeResponse);
-  rpc GetRecipe(GetRecipeRequest) returns (GetRecipeResponse);
-  rpc ListRecipes(ListRecipesRequest) returns (ListRecipesResponse);
-  rpc UpdateRecipe(UpdateRecipeRequest) returns (UpdateRecipeResponse);
-  rpc DeleteRecipe(DeleteRecipeRequest) returns (google.protobuf.Empty);
+  rpc CreateRecipe(CreateRecipeRequest) returns (CreateRecipeResponse) {
+    option (google.api.http) = {
+      post: "/v1/recipes"
+      body: "*"
+    };
+  }
+  rpc GetRecipe(GetRecipeRequest) returns (GetRecipeResponse) {
+    option (google.api.http) = {
+      get: "/v1/recipes/{id}"
+    };
+  }
+  rpc ListRecipes(ListRecipesRequest) returns (ListRecipesResponse) {
+    option (google.api.http) = {
+      get: "/v1/recipes"
+    };
+  }
+  rpc UpdateRecipe(UpdateRecipeRequest) returns (UpdateRecipeResponse) {
+    option (google.api.http) = {
+      put: "/v1/recipes/{id}"
+      body: "*"
+    };
+  }
+  rpc DeleteRecipe(DeleteRecipeRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete: "/v1/recipes/{id}"
+    };
+  }
 }
 
 message Recipe {

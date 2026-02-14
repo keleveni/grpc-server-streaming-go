@@ -5,9 +5,14 @@ package notification;
 option go_package = "github.com/kodaikumatani/grpc-golang/internal/pb/notification";
 
 import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
 
 service NotificationService {
-  rpc SubscribeRecipeFeed(SubscribeRecipeFeedRequest) returns (stream RecipeEvent);
+  rpc SubscribeRecipeFeed(SubscribeRecipeFeedRequest) returns (stream RecipeEvent) {
+    option (google.api.http) = {
+      get: "/v1/notifications/recipe-feed/{user_id}"
+    };
+  }
 }
 
 message SubscribeRecipeFeedRequest {

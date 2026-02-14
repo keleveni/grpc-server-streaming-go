@@ -7,6 +7,7 @@
 package recipe
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
@@ -555,7 +556,7 @@ var File_recipe_recipe_proto protoreflect.FileDescriptor
 
 const file_recipe_recipe_proto_rawDesc = "" +
 	"\n" +
-	"\x13recipe/recipe.proto\x12\x06recipe\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bgoogle/protobuf/empty.proto\"\xdf\x01\n" +
+	"\x13recipe/recipe.proto\x12\x06recipe\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1cgoogle/api/annotations.proto\"\xdf\x01\n" +
 	"\x06Recipe\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x14\n" +
@@ -589,13 +590,13 @@ const file_recipe_recipe_proto_rawDesc = "" +
 	"\x14UpdateRecipeResponse\x12&\n" +
 	"\x06recipe\x18\x01 \x01(\v2\x0e.recipe.RecipeR\x06recipe\"%\n" +
 	"\x13DeleteRecipeRequest\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id2\xf4\x02\n" +
-	"\rRecipeService\x12I\n" +
-	"\fCreateRecipe\x12\x1b.recipe.CreateRecipeRequest\x1a\x1c.recipe.CreateRecipeResponse\x12@\n" +
-	"\tGetRecipe\x12\x18.recipe.GetRecipeRequest\x1a\x19.recipe.GetRecipeResponse\x12F\n" +
-	"\vListRecipes\x12\x1a.recipe.ListRecipesRequest\x1a\x1b.recipe.ListRecipesResponse\x12I\n" +
-	"\fUpdateRecipe\x12\x1b.recipe.UpdateRecipeRequest\x1a\x1c.recipe.UpdateRecipeResponse\x12C\n" +
-	"\fDeleteRecipe\x12\x1b.recipe.DeleteRecipeRequest\x1a\x16.google.protobuf.EmptyB\x8a\x01\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id2\xf2\x03\n" +
+	"\rRecipeService\x12a\n" +
+	"\fCreateRecipe\x12\x1b.recipe.CreateRecipeRequest\x1a\x1c.recipe.CreateRecipeResponse\"\x16\x82\xd3\xe4\x93\x02\x10:\x01*\"\v/v1/recipes\x12Z\n" +
+	"\tGetRecipe\x12\x18.recipe.GetRecipeRequest\x1a\x19.recipe.GetRecipeResponse\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/v1/recipes/{id}\x12[\n" +
+	"\vListRecipes\x12\x1a.recipe.ListRecipesRequest\x1a\x1b.recipe.ListRecipesResponse\"\x13\x82\xd3\xe4\x93\x02\r\x12\v/v1/recipes\x12f\n" +
+	"\fUpdateRecipe\x12\x1b.recipe.UpdateRecipeRequest\x1a\x1c.recipe.UpdateRecipeResponse\"\x1b\x82\xd3\xe4\x93\x02\x15:\x01*\x1a\x10/v1/recipes/{id}\x12]\n" +
+	"\fDeleteRecipe\x12\x1b.recipe.DeleteRecipeRequest\x1a\x16.google.protobuf.Empty\"\x18\x82\xd3\xe4\x93\x02\x12*\x10/v1/recipes/{id}B\x8a\x01\n" +
 	"\n" +
 	"com.recipeB\vRecipeProtoP\x01Z7github.com/kodaikumatani/grpc-golang/internal/pb/recipe\xa2\x02\x03RXX\xaa\x02\x06Recipe\xca\x02\x06Recipe\xe2\x02\x12Recipe\\GPBMetadata\xea\x02\x06Recipeb\x06proto3"
 

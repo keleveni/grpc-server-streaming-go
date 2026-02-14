@@ -5,9 +5,15 @@ package follow;
 option go_package = "github.com/kodaikumatani/grpc-golang/internal/pb/follow";
 
 import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
 
 service FollowService {
-  rpc FollowUser(FollowUserRequest) returns (FollowUserResponse);
+  rpc FollowUser(FollowUserRequest) returns (FollowUserResponse) {
+    option (google.api.http) = {
+      post: "/v1/follows"
+      body: "*"
+    };
+  }
 }
 
 message FollowUserRequest {

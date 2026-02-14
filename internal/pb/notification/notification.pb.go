@@ -7,6 +7,7 @@
 package notification
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -206,7 +207,7 @@ var File_notification_notification_proto protoreflect.FileDescriptor
 
 const file_notification_notification_proto_rawDesc = "" +
 	"\n" +
-	"\x1fnotification/notification.proto\x12\fnotification\x1a\x1fgoogle/protobuf/timestamp.proto\"5\n" +
+	"\x1fnotification/notification.proto\x12\fnotification\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/api/annotations.proto\"5\n" +
 	"\x1aSubscribeRecipeFeedRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\"\x99\x01\n" +
 	"\vRecipeEvent\x12\x1d\n" +
@@ -222,9 +223,9 @@ const file_notification_notification_proto_rawDesc = "" +
 	"\x05title\x18\x03 \x01(\tR\x05title\x12 \n" +
 	"\vdescription\x18\x04 \x01(\tR\vdescription\x129\n" +
 	"\n" +
-	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt2s\n" +
-	"\x13NotificationService\x12\\\n" +
-	"\x13SubscribeRecipeFeed\x12(.notification.SubscribeRecipeFeedRequest\x1a\x19.notification.RecipeEvent0\x01B\xb4\x01\n" +
+	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt2\xa5\x01\n" +
+	"\x13NotificationService\x12\x8d\x01\n" +
+	"\x13SubscribeRecipeFeed\x12(.notification.SubscribeRecipeFeedRequest\x1a\x19.notification.RecipeEvent\"/\x82\xd3\xe4\x93\x02)\x12'/v1/notifications/recipe-feed/{user_id}0\x01B\xb4\x01\n" +
 	"\x10com.notificationB\x11NotificationProtoP\x01Z=github.com/kodaikumatani/grpc-golang/internal/pb/notification\xa2\x02\x03NXX\xaa\x02\fNotification\xca\x02\fNotification\xe2\x02\x18Notification\\GPBMetadata\xea\x02\fNotificationb\x06proto3"
 
 var (

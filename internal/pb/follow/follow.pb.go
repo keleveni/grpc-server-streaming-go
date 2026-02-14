@@ -7,6 +7,7 @@
 package follow
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -182,7 +183,7 @@ var File_follow_follow_proto protoreflect.FileDescriptor
 
 const file_follow_follow_proto_rawDesc = "" +
 	"\n" +
-	"\x13follow/follow.proto\x12\x06follow\x1a\x1fgoogle/protobuf/timestamp.proto\"U\n" +
+	"\x13follow/follow.proto\x12\x06follow\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/api/annotations.proto\"U\n" +
 	"\x11FollowUserRequest\x12\x1f\n" +
 	"\vfollower_id\x18\x01 \x01(\tR\n" +
 	"followerId\x12\x1f\n" +
@@ -196,10 +197,10 @@ const file_follow_follow_proto_rawDesc = "" +
 	"\vfollowee_id\x18\x02 \x01(\tR\n" +
 	"followeeId\x129\n" +
 	"\n" +
-	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt2T\n" +
-	"\rFollowService\x12C\n" +
+	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt2l\n" +
+	"\rFollowService\x12[\n" +
 	"\n" +
-	"FollowUser\x12\x19.follow.FollowUserRequest\x1a\x1a.follow.FollowUserResponseB\x8a\x01\n" +
+	"FollowUser\x12\x19.follow.FollowUserRequest\x1a\x1a.follow.FollowUserResponse\"\x16\x82\xd3\xe4\x93\x02\x10:\x01*\"\v/v1/followsB\x8a\x01\n" +
 	"\n" +
 	"com.followB\vFollowProtoP\x01Z7github.com/kodaikumatani/grpc-golang/internal/pb/follow\xa2\x02\x03FXX\xaa\x02\x06Follow\xca\x02\x06Follow\xe2\x02\x12Follow\\GPBMetadata\xea\x02\x06Followb\x06proto3"
 
