@@ -32,6 +32,7 @@ func NewBun(ctx context.Context) (*bun.DB, error) {
 		bunzerolog.WithSlowQueryLogLevel(zerolog.WarnLevel),
 		bunzerolog.WithErrorQueryLogLevel(zerolog.ErrorLevel),
 		bunzerolog.WithSlowQueryThreshold(3*time.Second),
+		bunzerolog.WithLogFormat(),
 	))
 
 	db.AddQueryHook(bunotel.NewQueryHook())

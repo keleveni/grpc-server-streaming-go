@@ -30,6 +30,13 @@ func loggingAdapter() logging.Logger {
 	return logging.LoggerFunc(func(ctx context.Context, lvl logging.Level, msg string, fields ...any) {
 		logger := log.Ctx(ctx).With().Fields(fields).Logger()
 
+		if span := trace.SpanContextFromContext(ctx); span.IsSampled() {
+			logger = logger.With().
+				Str("traceID", span.TraceID().String()).
+				Str("spanID", span.SpanID().String()).
+				Logger()
+		}
+
 		switch lvl {
 		case logging.LevelDebug:
 			logger.Debug().Msg(msg)

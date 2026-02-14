@@ -7,6 +7,7 @@ import (
 
 	"github.com/mattn/go-isatty"
 	"github.com/rs/zerolog"
+	"github.com/uptrace/bun/extra/bunzerolog"
 )
 
 func withLogger(ctx context.Context, out io.Writer) context.Context {
@@ -38,4 +39,17 @@ func WithLevel(ctx context.Context, level string) (context.Context, error) {
 	}
 
 	return withLogger(ctx, zerolog.Ctx(ctx).Level(lvl)), nil
+}
+
+func bun() bunzerolog.LogFormatFn {
+	return func(ctx context.Context, event *bun.QueryEvent, zeroctx *zerolog.Event) *zerolog.Event {
+		duration := h.now().Sub(event.StartTime)
+
+		return event.
+			Ctx(ctx).
+			Err(event.Err).
+			Str("query", event.Query).
+			Str("operation", event.Operation()).
+			Str("duration", duration.String())
+	}
 }
