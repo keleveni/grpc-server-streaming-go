@@ -1,23 +1,26 @@
-package logger
+package interceptor
 
 import (
 	"context"
 
 	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/logging"
 	"github.com/rs/zerolog/log"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
+	"google.golang.org/grpc"
 )
 
-func PanicRecoveryHandler(ctx context.Context, p any) error {
-	log.Ctx(ctx).Error().
-		Interface("panic", p).
-		Msg("panic recorvered in gRPC handler")
-
-	return status.Error(codes.Internal, "internal server error")
+func LoggingUnaryInterceptor() grpc.UnaryServerInterceptor {
+	return logging.UnaryServerInterceptor(
+		loggingAdapter(),
+	)
 }
 
-func LoggingAdapter() logging.Logger {
+func LoggingStreamInterceptor() grpc.StreamServerInterceptor {
+	return logging.StreamServerInterceptor(
+		loggingAdapter(),
+	)
+}
+
+func loggingAdapter() logging.Logger {
 	return logging.LoggerFunc(func(ctx context.Context, lvl logging.Level, msg string, fields ...any) {
 		logger := log.Ctx(ctx).With().Fields(fields).Logger()
 

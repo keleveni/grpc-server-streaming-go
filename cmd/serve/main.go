@@ -7,8 +7,7 @@ import (
 	"net"
 
 	"github.com/cockroachdb/errors"
-	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/logging"
-	"github.com/grpc-ecosystem/go-grpc-middleware/v2/interceptors/recovery"
+	"github.com/kodaikumatani/grpc-golang/internal/interceptor"
 	"github.com/kodaikumatani/grpc-golang/internal/logger"
 	"github.com/kodaikumatani/grpc-golang/internal/telemetry"
 	"github.com/rs/zerolog/log"
@@ -52,12 +51,12 @@ func run(ctx context.Context) error {
 	s := grpc.NewServer(
 		grpc.StatsHandler(otelgrpc.NewServerHandler()),
 		grpc.ChainUnaryInterceptor(
-			logging.UnaryServerInterceptor(logger.LoggingAdapter()),
-			recovery.UnaryServerInterceptor(recovery.WithRecoveryHandlerContext(logger.PanicRecoveryHandler)),
+			interceptor.RecoveryUnaryInterceptor(),
+			interceptor.LoggingUnaryInterceptor(),
 		),
 		grpc.ChainStreamInterceptor(
-			logging.StreamServerInterceptor(logger.LoggingAdapter()),
-			recovery.StreamServerInterceptor(recovery.WithRecoveryHandlerContext(logger.PanicRecoveryHandler)),
+			interceptor.RecoveryStreamInterceptor(),
+			interceptor.LoggingStreamInterceptor(),
 		),
 	)
 	s = services.Register(s)
