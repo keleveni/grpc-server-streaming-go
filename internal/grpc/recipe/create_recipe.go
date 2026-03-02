@@ -16,7 +16,7 @@ type createRecipeRequest struct {
 	Description string `validate:"required"`
 }
 
-func (h *Handler) CreateRecipe(
+func (h *handler) CreateRecipe(
 	ctx context.Context,
 	in *pb.CreateRecipeRequest,
 ) (*pb.CreateRecipeResponse, error) {
