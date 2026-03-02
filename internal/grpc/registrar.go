@@ -1,22 +1,22 @@
 package grpc
 
 import (
-	"github.com/kodaikumatani/grpc-golang/internal/grpc/follow"
-	"github.com/kodaikumatani/grpc-golang/internal/grpc/notification"
-	"github.com/kodaikumatani/grpc-golang/internal/grpc/recipe"
+	pb_follow "github.com/kodaikumatani/grpc-golang/internal/pb/follow"
+	pb_notification "github.com/kodaikumatani/grpc-golang/internal/pb/notification"
+	pb_recipe "github.com/kodaikumatani/grpc-golang/internal/pb/recipe"
 	"google.golang.org/grpc"
 )
 
 type Registrar struct {
-	recipeHandler       *recipe.Handler
-	notificationHandler *notification.Handler
-	followHandler       *follow.Handler
+	recipeHandler       pb_recipe.RecipeServiceServer
+	notificationHandler pb_notification.NotificationServiceServer
+	followHandler       pb_follow.FollowServiceServer
 }
 
 func NewRegistrar(
-	recipeHandler *recipe.Handler,
-	notificationHandler *notification.Handler,
-	followHandler *follow.Handler,
+	recipeHandler pb_recipe.RecipeServiceServer,
+	notificationHandler pb_notification.NotificationServiceServer,
+	followHandler pb_follow.FollowServiceServer,
 ) *Registrar {
 	return &Registrar{
 		recipeHandler:       recipeHandler,
@@ -26,9 +26,9 @@ func NewRegistrar(
 }
 
 func (r *Registrar) Register(app *grpc.Server) *grpc.Server {
-	r.recipeHandler.RegisterService(app)
-	r.notificationHandler.RegisterService(app)
-	r.followHandler.RegisterService(app)
+	pb_recipe.RegisterRecipeServiceServer(app, r.recipeHandler)
+	pb_notification.RegisterNotificationServiceServer(app, r.notificationHandler)
+	pb_follow.RegisterFollowServiceServer(app, r.followHandler)
 
 	return app
 }
