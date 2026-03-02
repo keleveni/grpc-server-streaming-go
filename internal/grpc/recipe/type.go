@@ -5,7 +5,7 @@ import (
 	pb "github.com/kodaikumatani/grpc-golang/internal/pb/recipe"
 )
 
-type Handler struct {
+type handler struct {
 	pb.UnimplementedRecipeServiceServer
 	read   *recipe.ReadUseCase
 	create *recipe.CreateUseCase
@@ -15,7 +15,7 @@ func NewHandler(
 	read *recipe.ReadUseCase,
 	create *recipe.CreateUseCase,
 ) pb.RecipeServiceServer {
-	return &Handler{
+	return &handler{
 		read:   read,
 		create: create,
 	}

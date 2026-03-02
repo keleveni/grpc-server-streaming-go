@@ -16,7 +16,7 @@ type getRecipeRequest struct {
 	ID string `validate:"required,uuid"`
 }
 
-func (h *Handler) GetRecipe(
+func (h *handler) GetRecipe(
 	ctx context.Context,
 	in *pb.GetRecipeRequest,
 ) (*pb.GetRecipeResponse, error) {

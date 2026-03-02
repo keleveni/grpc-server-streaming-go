@@ -5,13 +5,13 @@ import (
 	pb "github.com/kodaikumatani/grpc-golang/internal/pb/notification"
 )
 
-type Handler struct {
+type handler struct {
 	pb.UnimplementedNotificationServiceServer
 	subscribeFeed *notification.SubscribeFeedUseCase
 }
 
 func NewHandler(subscribeFeed *notification.SubscribeFeedUseCase) pb.NotificationServiceServer {
-	return &Handler{
+	return &handler{
 		subscribeFeed: subscribeFeed,
 	}
 }

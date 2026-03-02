@@ -15,7 +15,7 @@ type followUserRequest struct {
 	FollowerID string `validate:"required,ulid"`
 }
 
-func (h *Handler) FollowUser(
+func (h *handler) FollowUser(
 	ctx context.Context,
 	in *pb.FollowUserRequest,
 ) (*pb.FollowUserResponse, error) {

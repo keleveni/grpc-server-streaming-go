@@ -14,7 +14,7 @@ type subscribeRecipeFeedRequest struct {
 	UserID string `validate:"required,ulid"`
 }
 
-func (h *Handler) SubscribeRecipeFeed(
+func (h *handler) SubscribeRecipeFeed(
 	in *pb.SubscribeRecipeFeedRequest,
 	stream grpc.ServerStreamingServer[pb.RecipeEvent],
 ) error {

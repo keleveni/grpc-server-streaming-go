@@ -5,7 +5,7 @@ import (
 	pb "github.com/kodaikumatani/grpc-golang/internal/pb/follow"
 )
 
-type Handler struct {
+type handler struct {
 	pb.UnimplementedFollowServiceServer
 	follow *user.FollowUseCase
 }
@@ -13,7 +13,7 @@ type Handler struct {
 func NewHandler(
 	follow *user.FollowUseCase,
 ) pb.FollowServiceServer {
-	return &Handler{
+	return &handler{
 		follow: follow,
 	}
 }
