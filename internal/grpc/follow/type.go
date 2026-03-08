@@ -2,7 +2,7 @@ package follow
 
 import (
 	"github.com/kodaikumatani/grpc-server-streaming-go/internal/app/user"
-	pb "github.com/kodaikumatani/grpc-server-streaming-go/internal/pb/follow"
+	pb "github.com/kodaikumatani/grpc-server-streaming-go/pkg/pb/follow"
 )
 
 type handler struct {

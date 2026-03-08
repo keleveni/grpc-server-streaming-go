@@ -1,9 +1,9 @@
 package grpc
 
 import (
-	pb_follow "github.com/kodaikumatani/grpc-server-streaming-go/internal/pb/follow"
-	pb_notification "github.com/kodaikumatani/grpc-server-streaming-go/internal/pb/notification"
-	pb_recipe "github.com/kodaikumatani/grpc-server-streaming-go/internal/pb/recipe"
+	pb_follow "github.com/kodaikumatani/grpc-server-streaming-go/pkg/pb/follow"
+	pb_notification "github.com/kodaikumatani/grpc-server-streaming-go/pkg/pb/notification"
+	pb_recipe "github.com/kodaikumatani/grpc-server-streaming-go/pkg/pb/recipe"
 	"google.golang.org/grpc"
 )
 

@@ -1,15 +1,10 @@
 version: v2
-managed:
-  enabled: true
-  override:
-    - file_option: go_package_prefix
-      value: github.com/kodaikumatani/grpc-server-streaming-go/internal/pb
 plugins:
   - remote: buf.build/protocolbuffers/go
-    out: internal/pb
+    out: pkg/pb
     opt:
       - paths=source_relative
   - remote: buf.build/grpc/go
-    out: internal/pb
+    out: pkg/pb
     opt:
       - paths=source_relative

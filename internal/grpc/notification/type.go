@@ -2,7 +2,7 @@ package notification
 
 import (
 	"github.com/kodaikumatani/grpc-server-streaming-go/internal/app/notification"
-	pb "github.com/kodaikumatani/grpc-server-streaming-go/internal/pb/notification"
+	pb "github.com/kodaikumatani/grpc-server-streaming-go/pkg/pb/notification"
 )
 
 type handler struct {
