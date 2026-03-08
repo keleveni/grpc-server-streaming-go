@@ -6,7 +6,7 @@ import (
 
 	"github.com/go-playground/validator/v10"
 	"github.com/kodaikumatani/grpc-server-streaming-go/internal/app/recipe"
-	pb "github.com/kodaikumatani/grpc-server-streaming-go/internal/pb/recipe"
+	pb "github.com/kodaikumatani/grpc-server-streaming-go/pkg/pb/recipe"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/timestamppb"

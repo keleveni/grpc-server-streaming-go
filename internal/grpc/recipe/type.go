@@ -2,7 +2,7 @@ package recipe
 
 import (
 	"github.com/kodaikumatani/grpc-server-streaming-go/internal/app/recipe"
-	pb "github.com/kodaikumatani/grpc-server-streaming-go/internal/pb/recipe"
+	pb "github.com/kodaikumatani/grpc-server-streaming-go/pkg/pb/recipe"
 )
 
 type handler struct {

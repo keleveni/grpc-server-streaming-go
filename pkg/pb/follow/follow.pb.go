@@ -199,9 +199,7 @@ const file_follow_follow_proto_rawDesc = "" +
 	"created_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt2T\n" +
 	"\rFollowService\x12C\n" +
 	"\n" +
-	"FollowUser\x12\x19.follow.FollowUserRequest\x1a\x1a.follow.FollowUserResponseB\x8a\x01\n" +
-	"\n" +
-	"com.followB\vFollowProtoP\x01Z7github.com/kodaikumatani/grpc-server-streaming-go/internal/pb/follow\xa2\x02\x03FXX\xaa\x02\x06Follow\xca\x02\x06Follow\xe2\x02\x12Follow\\GPBMetadata\xea\x02\x06Followb\x06proto3"
+	"FollowUser\x12\x19.follow.FollowUserRequest\x1a\x1a.follow.FollowUserResponseBAZ?github.com/kodaikumatani/grpc-server-streaming-go/pkg/pb/followb\x06proto3"
 
 var (
 	file_follow_follow_proto_rawDescOnce sync.Once

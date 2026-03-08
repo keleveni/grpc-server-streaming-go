@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/go-playground/validator/v10"
-	pb "github.com/kodaikumatani/grpc-server-streaming-go/internal/pb/follow"
+	pb "github.com/kodaikumatani/grpc-server-streaming-go/pkg/pb/follow"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/timestamppb"
