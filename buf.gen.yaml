@@ -3,7 +3,7 @@ managed:
   enabled: true
   override:
     - file_option: go_package_prefix
-      value: github.com/kodaikumatani/grpc-golang/internal/pb
+      value: github.com/kodaikumatani/grpc-server-streaming-go/internal/pb
 plugins:
   - remote: buf.build/protocolbuffers/go
     out: internal/pb

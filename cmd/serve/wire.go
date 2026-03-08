@@ -7,8 +7,8 @@ import (
 	"context"
 
 	"github.com/google/wire"
-	"github.com/kodaikumatani/grpc-golang/internal"
-	"github.com/kodaikumatani/grpc-golang/internal/grpc"
+	"github.com/kodaikumatani/grpc-server-streaming-go/internal"
+	"github.com/kodaikumatani/grpc-server-streaming-go/internal/grpc"
 )
 
 type services struct {

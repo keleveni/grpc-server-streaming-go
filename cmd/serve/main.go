@@ -7,8 +7,8 @@ import (
 	"net"
 
 	"github.com/cockroachdb/errors"
-	"github.com/kodaikumatani/grpc-golang/internal/interceptor"
-	"github.com/kodaikumatani/grpc-golang/internal/logger"
+	"github.com/kodaikumatani/grpc-server-streaming-go/internal/interceptor"
+	"github.com/kodaikumatani/grpc-server-streaming-go/internal/logger"
 	"github.com/rs/zerolog/log"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package follow;
 
-option go_package = "github.com/kodaikumatani/grpc-golang/internal/pb/follow";
+option go_package = "github.com/kodaikumatani/grpc-server-streaming-go/internal/pb/follow";
 
 import "google/protobuf/timestamp.proto";
 

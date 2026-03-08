@@ -225,7 +225,7 @@ const file_notification_notification_proto_rawDesc = "" +
 	"created_at\x18\x05 \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt2s\n" +
 	"\x13NotificationService\x12\\\n" +
 	"\x13SubscribeRecipeFeed\x12(.notification.SubscribeRecipeFeedRequest\x1a\x19.notification.RecipeEvent0\x01B\xb4\x01\n" +
-	"\x10com.notificationB\x11NotificationProtoP\x01Z=github.com/kodaikumatani/grpc-golang/internal/pb/notification\xa2\x02\x03NXX\xaa\x02\fNotification\xca\x02\fNotification\xe2\x02\x18Notification\\GPBMetadata\xea\x02\fNotificationb\x06proto3"
+	"\x10com.notificationB\x11NotificationProtoP\x01Z=github.com/kodaikumatani/grpc-server-streaming-go/internal/pb/notification\xa2\x02\x03NXX\xaa\x02\fNotification\xca\x02\fNotification\xe2\x02\x18Notification\\GPBMetadata\xea\x02\fNotificationb\x06proto3"
 
 var (
 	file_notification_notification_proto_rawDescOnce sync.Once

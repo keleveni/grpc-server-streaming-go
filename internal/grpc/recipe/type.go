@@ -1,8 +1,8 @@
 package recipe
 
 import (
-	"github.com/kodaikumatani/grpc-golang/internal/app/recipe"
-	pb "github.com/kodaikumatani/grpc-golang/internal/pb/recipe"
+	"github.com/kodaikumatani/grpc-server-streaming-go/internal/app/recipe"
+	pb "github.com/kodaikumatani/grpc-server-streaming-go/internal/pb/recipe"
 )
 
 type handler struct {

@@ -1,8 +1,8 @@
 package notification
 
 import (
-	"github.com/kodaikumatani/grpc-golang/internal/app/notification"
-	pb "github.com/kodaikumatani/grpc-golang/internal/pb/notification"
+	"github.com/kodaikumatani/grpc-server-streaming-go/internal/app/notification"
+	pb "github.com/kodaikumatani/grpc-server-streaming-go/internal/pb/notification"
 )
 
 type handler struct {

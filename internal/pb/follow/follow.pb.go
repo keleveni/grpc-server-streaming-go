@@ -201,7 +201,7 @@ const file_follow_follow_proto_rawDesc = "" +
 	"\n" +
 	"FollowUser\x12\x19.follow.FollowUserRequest\x1a\x1a.follow.FollowUserResponseB\x8a\x01\n" +
 	"\n" +
-	"com.followB\vFollowProtoP\x01Z7github.com/kodaikumatani/grpc-golang/internal/pb/follow\xa2\x02\x03FXX\xaa\x02\x06Follow\xca\x02\x06Follow\xe2\x02\x12Follow\\GPBMetadata\xea\x02\x06Followb\x06proto3"
+	"com.followB\vFollowProtoP\x01Z7github.com/kodaikumatani/grpc-server-streaming-go/internal/pb/follow\xa2\x02\x03FXX\xaa\x02\x06Follow\xca\x02\x06Follow\xe2\x02\x12Follow\\GPBMetadata\xea\x02\x06Followb\x06proto3"
 
 var (
 	file_follow_follow_proto_rawDescOnce sync.Once

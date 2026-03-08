@@ -1,8 +1,8 @@
 package follow
 
 import (
-	"github.com/kodaikumatani/grpc-golang/internal/app/user"
-	pb "github.com/kodaikumatani/grpc-golang/internal/pb/follow"
+	"github.com/kodaikumatani/grpc-server-streaming-go/internal/app/user"
+	pb "github.com/kodaikumatani/grpc-server-streaming-go/internal/pb/follow"
 )
 
 type handler struct {

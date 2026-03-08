@@ -1,4 +1,4 @@
-# grpc-golang
+# grpc-server-streaming-go
 
 gRPCとProtocol Buffersを使用したレシピ共有アプリケーションのサンプルプロジェクトです。
 Server Streamingによるリアルタイム通知機能を実装しています。

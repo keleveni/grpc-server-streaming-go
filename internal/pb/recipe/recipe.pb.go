@@ -597,7 +597,7 @@ const file_recipe_recipe_proto_rawDesc = "" +
 	"\fUpdateRecipe\x12\x1b.recipe.UpdateRecipeRequest\x1a\x1c.recipe.UpdateRecipeResponse\x12C\n" +
 	"\fDeleteRecipe\x12\x1b.recipe.DeleteRecipeRequest\x1a\x16.google.protobuf.EmptyB\x8a\x01\n" +
 	"\n" +
-	"com.recipeB\vRecipeProtoP\x01Z7github.com/kodaikumatani/grpc-golang/internal/pb/recipe\xa2\x02\x03RXX\xaa\x02\x06Recipe\xca\x02\x06Recipe\xe2\x02\x12Recipe\\GPBMetadata\xea\x02\x06Recipeb\x06proto3"
+	"com.recipeB\vRecipeProtoP\x01Z7github.com/kodaikumatani/grpc-server-streaming-go/internal/pb/recipe\xa2\x02\x03RXX\xaa\x02\x06Recipe\xca\x02\x06Recipe\xe2\x02\x12Recipe\\GPBMetadata\xea\x02\x06Recipeb\x06proto3"
 
 var (
 	file_recipe_recipe_proto_rawDescOnce sync.Once

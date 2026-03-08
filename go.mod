@@ -1,4 +1,4 @@
-module github.com/kodaikumatani/grpc-golang
+module github.com/kodaikumatani/grpc-server-streaming-go
 
 go 1.25.5
 

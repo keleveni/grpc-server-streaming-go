@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/kodaikumatani/grpc-golang/internal/app/recipe"
+	"github.com/kodaikumatani/grpc-server-streaming-go/internal/app/recipe"
 	"github.com/uptrace/bun"
 )
 

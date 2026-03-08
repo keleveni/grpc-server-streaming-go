@@ -5,9 +5,9 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/kodaikumatani/grpc-golang/internal/app/recipe"
-	"github.com/kodaikumatani/grpc-golang/internal/db/follow"
-	"github.com/kodaikumatani/grpc-golang/internal/orm"
+	"github.com/kodaikumatani/grpc-server-streaming-go/internal/app/recipe"
+	"github.com/kodaikumatani/grpc-server-streaming-go/internal/db/follow"
+	"github.com/kodaikumatani/grpc-server-streaming-go/internal/orm"
 	"github.com/samber/lo"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package notification;
 
-option go_package = "github.com/kodaikumatani/grpc-golang/internal/pb/notification";
+option go_package = "github.com/kodaikumatani/grpc-server-streaming-go/internal/pb/notification";
 
 import "google/protobuf/timestamp.proto";
 
